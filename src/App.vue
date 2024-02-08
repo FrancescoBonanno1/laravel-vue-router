@@ -1,16 +1,28 @@
 <script>
-import AppComponent from "./components/AppComponent.vue"
+//import AppComponent from "./components/AppComponent.vue";
+import AppHome from "./pages/AppHome.vue";
+import AppAbout from "./pages/AppAbout.vue";
 
 import axios from 'axios'; //importo Axios
 import { store } from "./store.js" //state management
 
 export default {
 	components: {
-		AppComponent
+		//AppComponent,
+		AppHome,
+		AppAbout
 	},
 	data() {
 		return {
-			store
+			store,
+			pathArray:[{
+				routeName :"home",
+				label : "Homepage"
+			},
+			{
+				routeName :"about",
+				label : "About"
+			}]
 		}
 	},
 	mounted() {
@@ -31,15 +43,20 @@ export default {
 </script>
 
 <template>
-	<header>Header template</header>
-	<router-view></router-view>
+	<header>
+		<div v-for ="(path, paths) in pathArray" :key="paths">
+			<router-link :to="{name: path.routeName}" class="nav-link">
+				{{ path.label }}</router-link>
+		</div>
+	</header>
 	
 	<main>
-		<AppComponent />
+		<router-view></router-view>
+		<!-- <AppComponent />
 		<button class="btn btn-primary">
 			<font-awesome-icon icon="fa-solid fa-home" class="me-1" />
 			<span>Primary button</span>
-		</button>
+		</button> -->
 	</main>
 </template>
 
@@ -53,6 +70,12 @@ export default {
 // @use './styles/partials/variables' as *;
 
 // ...qui eventuale SCSS di App.vue
+header{
+	background-color: darkorchid;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
 main {
 	padding: 1rem;
 }

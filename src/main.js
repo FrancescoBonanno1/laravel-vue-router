@@ -22,6 +22,6 @@ library.add(brandIcons.fab);
 
 window.vue = {};
 window.vue.App = createApp(App)
-.use(router)
+    .use(router)
     .component('font-awesome-icon', FontAwesomeIcon)
     .mount('#app');

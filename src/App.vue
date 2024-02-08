@@ -8,14 +8,14 @@ import { store } from "./store.js" //state management
 
 export default {
 	components: {
-		//AppComponent,
+		//AppComponent
 		AppHome,
 		AppAbout
 	},
 	data() {
 		return {
 			store,
-			pathArray:[{
+			pathArray :[{
 				routeName :"home",
 				label : "Homepage"
 			},
@@ -51,7 +51,7 @@ export default {
 	</header>
 	
 	<main>
-		<router-view></router-view>
+	<router-view></router-view>
 		<!-- <AppComponent />
 		<button class="btn btn-primary">
 			<font-awesome-icon icon="fa-solid fa-home" class="me-1" />

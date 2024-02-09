@@ -17,7 +17,7 @@ export default {
 			store,
 			pathArray :[{
 				routeName :"home",
-				label : "Homepage"
+				label : "Home"
 			},
 			{
 				routeName :"about",
@@ -72,9 +72,13 @@ export default {
 // ...qui eventuale SCSS di App.vue
 header{
 	background-color: darkorchid;
+	height: 10vh;
 	display: flex;
 	align-items: center;
-	justify-content: space-around;
+	justify-content: flex-end;
+}
+header div{
+	margin: 0% 2% 0% 0%;
 }
 main {
 	padding: 1rem;

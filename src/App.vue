@@ -26,30 +26,33 @@ export default {
 		}
 	},
 	mounted() {
-		this.doThings();
+		this.getEventList();
 
-		axios.get("http://127.0.0.1:8000/api/events").then(risultato => {
-			if (risultato.data) {
+		
+	},
+	methods: {
+		getEventList() {
+			let link = this.store.apiUrl + this.store.eventEndpoint;
+
+			axios.get(link).then(risultato => {
+			if (risultato.status===200 && risultato.statusText === "OK") {
 				console.log(risultato.data);
 				console.log(risultato.status);
 				console.log(risultato.statusText);
-				console.log(risultato);
+				this.store.eventList = risultato.data;
+				
 				
 			}
 		else	
 		{
-			"bro c'è un problema con quella cosa che chiami"
+			console.error("compare c'è un problema con quella cosa che chiami codice")
 		}
 		}).catch(errore => {
 			console.error(errore);
 		});
-	},
-	methods: {
-		doThings() {
-			console.log("App.vue does things");
+	}
 		}
 	}
-}
 </script>
 
 <template>
@@ -62,6 +65,13 @@ export default {
 	
 	<main>
 	<router-view></router-view>
+
+	<div v-for="event in store.eventList">
+	<h2>{{ event.name }}</h2>
+	<img src="{{ event.image }}" alt="immagine">
+	<span>{{ event.description }}</span>
+	</div>
+
 		<!-- <AppComponent />
 		<button class="btn btn-primary">
 			<font-awesome-icon icon="fa-solid fa-home" class="me-1" />

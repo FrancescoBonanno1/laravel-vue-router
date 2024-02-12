@@ -28,11 +28,21 @@ export default {
 	mounted() {
 		this.doThings();
 
-		// axios.get("indirizzo").then(risultato => {
-		// 	console.log(risultato);
-		// }).catch(errore => {
-		// 	console.error(errore);
-		// });
+		axios.get("http://127.0.0.1:8000/api/events").then(risultato => {
+			if (risultato.data) {
+				console.log(risultato.data);
+				console.log(risultato.status);
+				console.log(risultato.statusText);
+				console.log(risultato);
+				
+			}
+		else	
+		{
+			"bro c'è un problema con quella cosa che chiami"
+		}
+		}).catch(errore => {
+			console.error(errore);
+		});
 	},
 	methods: {
 		doThings() {
